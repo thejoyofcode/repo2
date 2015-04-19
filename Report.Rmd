@@ -1,0 +1,37 @@
+---
+title: "Gapminder Report"
+author: "Anna Williford"
+date: "Sunday, April 19, 2015"
+output: pdf_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r, echo=FALSE, message=FALSE,warning=FALSE}
+library("dplyr")
+gap.in<-read.table("output/combined_gapMinder.tsv", sep="\t", header= TRUE)
+
+gap.inBrazil<-filter(gap.in,country=="Brazil")
+plot(gap.inBrazil$year, gap.inBrazil$gdpPercap, type="b", main = "Brazil", xlab="Year", ylab="GDP",col="red", cex=1,lwd=2)
+#plot(cars)
+```
+
+Canada data
+
+```{r, echo=FALSE}
+
+gap.inCanada<-filter(gap.in,country=="Canada")
+plot(gap.inCanada$year, gap.inCanada$gdpPercap, type="b", main = "Canada", xlab="Year", ylab="GDP",col="green", cex=1,lwd=2)
+#plot(cars)
+```
+
+Population os Finland is increasing
+
+```{r, echo=FALSE}
+
+gap.inFinland<-filter(gap.in,country=="Finland")
+plot(gap.inFinland$year, gap.inFinland$gdpPercap, type="b", main = "Finland", xlab="Year", ylab="GDP",col="blue", cex=1,lwd=2)
+#plot(cars)
+```
