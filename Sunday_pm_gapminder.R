@@ -2,20 +2,35 @@
 # anna williford
 # April 19th, 2015
 
-install.packages("dplyr", dependencies=TRUE)
+# install.packages("dplyr", dependencies=TRUE)
 library("dplyr")
 
 # Read in data
 gap.in<-read.table("output/combined_gapMinder.tsv", sep="\t", header= TRUE)
 
-for (row.number in 1:10){
-  for (col.number in 1:5){
-    print(gap.in[row.number, col.number])
-  }
-}
+gap.in %>% 
+  filter(pop>15000000)  %>%
+  select(country,year,pop) %>%
+  group_by(country) %>%
+  summarize(min=min(pop))
 
-add.me<-function(x,y){
-  x+y
-}
+summaryAW<-gap.in  %>%
+  filter (year<1990) %>%
+  group_by(continent, year) %>%
+  summarize (mean(pop))
 
-add.me(3,4)
+
+
+foo <- as.data.frame(summaryAW)
+
+write.table(summaryAW, file="MySummary", quote=FALSE,row.names=FALSE)
+summaryAW-> data.out
+
+data(iris)
+attach(iris)
+
+install.packages("tidyr", dependencies=TRUE)
+library("tidyr")
+#turn iris into long
+irisLong<-gather(iris, "Measurement", "Value",1:4)
+
