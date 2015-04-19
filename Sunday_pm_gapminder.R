@@ -3,4 +3,10 @@
 # April 19th, 2015
 
 # Read in data
-gap.in<-read.table("output/combined_gapMinder.tsv", sep="\t")
+gap.in<-read.table("output/combined_gapMinder.tsv", sep="\t", header= TRUE)
+
+for (row.number in 1:10){
+  for (col.number in 1:5){
+    print(gap.in[row.number, col.number])
+  }
+}
