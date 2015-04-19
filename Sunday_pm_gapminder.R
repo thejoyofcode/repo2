@@ -2,6 +2,9 @@
 # anna williford
 # April 19th, 2015
 
+install.packages("dplyr", dependencies=TRUE)
+library("dplyr")
+
 # Read in data
 gap.in<-read.table("output/combined_gapMinder.tsv", sep="\t", header= TRUE)
 
