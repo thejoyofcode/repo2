@@ -10,3 +10,9 @@ for (row.number in 1:10){
     print(gap.in[row.number, col.number])
   }
 }
+
+add.me<-function(x,y){
+  x+y
+}
+
+add.me(3,4)
